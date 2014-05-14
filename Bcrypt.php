@@ -16,12 +16,6 @@ class Bcrypt {
 	
 	function __construct($times = 12){
 		$this->CI =& get_instance();
-		
-		// Bcrypt not supported
-		if(CRYPT_BLOWFISH != 1) {
-			show_error('Bcrypt is not installed or is not supported in this system. You can read more about bcrypt support <a href="http://php.net/crypt">here</a>.');
-		}
-
 		$this->times = $times;
 	}
 	
