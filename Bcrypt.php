@@ -2,12 +2,10 @@
 
 /**
 * Bcrypt Class
+* Simple and easy to use bcrypt helper for Codeigniter
 *
-* @package		Orion Project
-* @subpackage	Libraries
-* @category	Crypt
-* @author		Waldir Bertazzi Junior
-* @link		http://waldir.org/
+* @author 		Waldir Bertazzi Junior
+* @link 		http://waldir.org/
 */
 
 class Bcrypt {
@@ -26,7 +24,7 @@ class Bcrypt {
 	 * @return String contains hashed input
 	 * @author Waldir Bertazzi Junior
 	**/	
-	function hash($input){
+	public function hash($input){
 		$hash = crypt($input, $this->generate_salt());
 		
 		// hashed successful
@@ -54,7 +52,7 @@ class Bcrypt {
 	}
 	
 	
-	function generate_salt(){
+	private function generate_salt(){
 		$salt = sprintf('$2a$%02d$', $this->times);
 		
 		// generate random bytes for our salt
@@ -68,11 +66,11 @@ class Bcrypt {
 	/**
 	* Function that return random bytes from various sources.
 	*
-	* @return random bytes
-	* @param numero de bytes pra gerar
-	* @author Waldir Bertazzi Junior
+	* @return		random bytes
+	* @param		number of bytes to generate
+	* @author		Waldir Bertazzi Junior
 	**/
-	function get_random_bytes($count){
+	private function get_random_bytes($count){
 		$bytes = '';
 		
 		if(function_exists('openssl_random_pseudo_bytes') && !(PHP_OS == 'Windows' || PHP_OS == 'WIN32' || PHP_OS == 'WINNT')) {
@@ -117,7 +115,7 @@ class Bcrypt {
 	* @author PHP Password Hashing Framework
 	* @link http://www.openwall.com/phpass/
 	**/
-	function encode_bytes($input){
+	private function encode_bytes($input){
 		$itoa64 = './ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 		$output = '';
